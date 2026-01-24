@@ -17,3 +17,6 @@ print(df['Item'].value_counts(normalize=True))
 
 print("\nFirst 5 items: ")
 print(df.head(5))
+
+count_unknown = (df == "UNKNOWN").sum()     #Theo tung cot, them sum() de tim tong tren toan bo dataset
+print(f"\nTổng số giá trị UNKNOWN: {count_unknown}")
