@@ -22,8 +22,9 @@ def handle_missing(df):
         ['',' ', 'UNKNOWN', 'N/A', 'ERROR'],pd.NA)                     #inplace=True THAY DOI TREN BANG HIEN TAI
 
     df = df.dropna(subset=['quantity','price_per_unit','item', 'transaction_date']).copy()
-    df.loc[:, 'payment_method'] = df['payment_method'].fillna('unknown')
-    df.loc[:, 'location'] = df['location'].fillna('unknown')
+
+    df['location'] = df['location'].fillna('unknown')
+    df['payment_method'] = df.loc[:,'payment_method'].fillna('unknown')
 
     return df
 
