@@ -24,7 +24,7 @@ def handle_missing(df):
     df = df.dropna(subset=['quantity','price_per_unit','item', 'transaction_date']).copy()
 
     df['location'] = df['location'].fillna('unknown')
-    df['payment_method'] = df.loc[:,'payment_method'].fillna('unknown')
+    df['payment_method'] = df['payment_method'].fillna('unknown')
 
     return df
 
