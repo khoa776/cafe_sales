@@ -4,12 +4,12 @@ import pandas as pd
 def visualize_revenue_by_month(revenue_by_month):
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
-    ax1.bar(list(revenue_by_month['month']), revenue_by_month['total_order_month'])
+    ax1.bar(revenue_by_month['month'], revenue_by_month['total_order_month'])
     ax1.set_xlabel('Month')
     ax1.set_ylabel('Total Order')
 
     ax2 = ax1.twinx()
-    ax2.plot(list(revenue_by_month['month']), revenue_by_month['total_revenue_month'], color='red',
+    ax2.plot(revenue_by_month['month'], revenue_by_month['total_revenue_month'], color='red',
              label='revenue by month')
     ax2.set_xlabel('Month')
     ax2.set_ylabel('Total Revenue($)')
@@ -20,7 +20,7 @@ def visualize_revenue_by_month(revenue_by_month):
 def visualize_revenue_by_item(revenue_by_item):
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.barh(list(revenue_by_item['item']), revenue_by_item['total_revenue_item'], color='blue')
+    ax.barh(revenue_by_item['item'], revenue_by_item['total_revenue_item'], color='blue')
     ax.set_xlabel('Item')
     ax.set_ylabel('Total Revenue($)')
 
@@ -30,11 +30,21 @@ def visualize_revenue_by_item(revenue_by_item):
 def visualize_revenue_by_item_types(revenue_by_item_type):
     fig, ax = plt.subplots(figsize=(10, 6))
 
-    ax.pie(list(revenue_by_item_type['total_revenue_item_type'])
+    ax.pie(revenue_by_item_type['total_revenue_item_type']
            ,autopct='%1.1f%%', startangle=140)
 
     plt.title('SO SANH DOANH THU DO AN VA DO UONG')
-    plt.legend(list(revenue_by_item_type['item_type']),loc='center right')
+    plt.legend(revenue_by_item_type['item_type'],loc='center right')
+    plt.show()
+
+def visualize_revenue_by_payment_method(revenue_by_payment_method):
+    fig,ax = plt.subplots(figsize=(10, 6))
+
+    ax.bar(list(revenue_by_payment_method['payment_method']),list(revenue_by_payment_method['total_revenue_payment']),)
+    ax.set_xlabel('Payment Method')
+    ax.set_ylabel('Total Revenue($)')
+
+    plt.title('DOANH THU THEO PHUONG THUC THANH TOAN')
     plt.show()
 
 def main():
@@ -49,6 +59,7 @@ def main():
         print('Nhap 1 de xem Doanh thu va Don hang theo thang\n')
         print('Nhap 2 de xem Doanh thu theo san pham\n')
         print('Nhap 3 de xem so sanh Doanh thu theo loai san pham\n')
+        print('Nhap 4 de xem doanh thu theo phuong thuc thanh toan\n')
         press = int(input())
 
         if press == 0:
@@ -59,6 +70,8 @@ def main():
             visualize_revenue_by_item(revenue_by_item)
         elif press == 3:
             visualize_revenue_by_item_types(revenue_by_item_type)
+        elif press == 4:
+            visualize_revenue_by_payment_method(revenue_by_payment_method)
 
 
 if __name__ == '__main__':
