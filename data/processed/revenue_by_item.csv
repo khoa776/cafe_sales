@@ -1,0 +1,9 @@
+item,total_revenue_item,total_quantity_item,item_type
+Salad,14890.0,2978.0,food
+Sandwich,11680.0,2920.0,food
+Smoothie,11608.0,2902.0,drink
+Juice,9108.0,3036.0,drink
+Cake,9009.0,3003.0,food
+Coffee,6210.0,3105.0,drink
+Tea,4179.0,2786.0,drink
+Cookie,2775.0,2775.0,food
