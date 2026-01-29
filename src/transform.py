@@ -32,10 +32,17 @@ def item_revenue(df):
             total_quantity_item = ('quantity', 'sum'),
         )
     )
-
     drink = ['Juice', 'Coffee', 'Smoothie', 'Tea']
     item_revenue['item_type'] = np.where(item_revenue['item'].isin(drink), 'drink', 'food' )
     return item_revenue
+
+def item_types_revenue(df):
+    item_types = (
+        df.groupby("item_type", as_index=False)
+        .agg(
+            total_revenue_item_type = ('total_spent', 'sum'), )
+    )
+    return item_types
 
 def payment_revenue(df):
     payment_revenue = (
@@ -56,6 +63,7 @@ def main():
     revenue_by_month = month_revenue(df)
     revenue_by_item = item_revenue(df)
     revenue_by_payment_method = payment_revenue(df)
+    revenue_by_item_type = item_types_revenue(df)
 
 #   ==== SORT ====
     revenue_by_month = revenue_by_month.sort_values(['year', 'month'], ascending=True)
@@ -66,6 +74,7 @@ def main():
     revenue_by_month.to_csv("../data/processed/revenue_by_month.csv", index=False)
     revenue_by_item.to_csv("../data/processed/revenue_by_item.csv", index=False)
     revenue_by_payment_method.to_csv("../data/processed/revenue_by_payment_method.csv", index=False)
+    revenue_by_item_type.to_csv("../data/processed/revenue_by_item_type.csv", index=False)
 
 if __name__ == '__main__':
     main()
