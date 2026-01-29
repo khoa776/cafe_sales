@@ -58,7 +58,7 @@ def main():
     revenue_by_payment_method = payment_revenue(df)
 
 #   ==== SORT ====
-    revenue_by_month = revenue_by_month.sort_values(['year', 'month'], ascending=False)
+    revenue_by_month = revenue_by_month.sort_values(['year', 'month'], ascending=True)
     revenue_by_item = revenue_by_item.sort_values('total_revenue_item', ascending=False)
     revenue_by_payment_method = revenue_by_payment_method.sort_values('total_revenue_payment', ascending=False)
 
